@@ -1,0 +1,32 @@
+.popup__title-info {
+  font-family: 'Roboto', 'Arial', sans-serif;
+  font-size: 24px;
+  line-height: 1.15;
+  font-style: normal;
+  font-weight: 900;
+  margin: 43px auto 14px 36px;
+  color: #000000;
+}
+
+.popup__button-login {
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-size: 18px;
+  line-height: 1.2;
+  font-style: normal;
+  font-weight: 400;
+  color: #2F71E5;
+  margin-left: 36px;
+  margin-bottom: 51px;
+  align-self: flex-start;
+  padding: 0;
+  border: none;
+  background: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.popup__button-login:hover {
+  transition: all .5s linear;
+  opacity: 0.6;
+  color: #2F71E5;
+}
