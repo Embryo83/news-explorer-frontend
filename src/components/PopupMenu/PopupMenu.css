@@ -1,0 +1,189 @@
+.burger {
+  display: none;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 4;
+}
+
+.burger_type_opened {
+  display: block;
+}
+
+.burger__container {
+  background-color: #1A1B22;
+}
+
+.burger__container_type_white {
+  background-color: white;
+}
+
+.burger__header::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: -1;
+  background-color: rgba(0, 0, 0, .5);
+}
+
+.burger__header {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: inset 0px -1px 0px rgb(209 210 214 / 20%);
+}
+
+.burger__logo {
+  font-family: 'Roboto Slab', 'Arial', sans-serif;
+  color: white;
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 16px 0px 16px 16px;
+  text-decoration: none;
+}
+
+.burger__close-button {
+  background-image: url(../../images/menuclose-dark.svg);
+  margin-top: 16px;
+  margin-right: 16px;
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  background-position: center;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.burger__close-button_type_light {
+  background-image: url(../../images/close-button.png);
+  margin-top: 16px;
+  margin-right: 16px;
+  background-color: transparent;
+  background-position: center;
+  color: black;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  width: 24px;
+  height: 24px;
+}
+
+.burger__menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.burger__nav-link {
+  list-style-type: none;
+}
+
+.burger__nav-link:last-child {
+  margin-bottom: 0px;
+}
+
+.burger__nav-title {
+  font-family: 'Roboto', 'Arial', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 3.1;
+  text-decoration: none;
+  color:white;
+}
+
+.burger__nav-title:hover {
+  transition: opacity 0.5s;
+  opacity: 0.6;
+}
+
+.burger__text_type_dark {
+  color: black;
+}
+
+.burger__nav-list {
+  padding: 0px;
+  margin-left: 16px;
+}
+
+.burger__button-container {
+  margin: 0 auto;
+}
+
+.burger__close-button:hover {
+  transition: opacity 0.5s;
+  opacity: 0.6;
+}
+
+.burger__button_type_active {
+  display: none;
+}
+
+.burger__button {
+  border-radius: 100px;
+  font-family: 'Roboto', 'Arial', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3;
+  width: 288px;
+  height: 56px;
+  border: 1px solid #FFFFFF;
+  background: transparent;
+  color: #FFFFFF;
+  margin-top: 16px;
+  margin-bottom: 24px;
+  cursor: pointer;
+  outline: none;
+}
+
+.burger__button:hover {
+  transition: opacity 0.5s;
+  opacity: 0.6;
+}
+
+.burger__button-link {
+  text-decoration: none;
+}
+
+.burger__button-name {
+  display: none;
+  margin-top: 19px;
+  border-radius: 100px;
+  font-family: 'Roboto', 'Arial', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.3;
+  border: 1px solid #ffffff;
+  width: 288px;
+  height: 56px;
+  margin-bottom: 24px;
+  background: transparent;
+  color: #ffffff;
+  outline: none;
+  cursor: pointer;
+}
+
+.burger__light-button {
+  color: black;
+  border: 1px solid black;
+}
+
+.burger__dark-button_type_active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.burger__dark-button_type_active:hover{
+  transition: opacity 0.5s;
+  opacity: 0.6;
+}
+
+.burger__close-button_type_light:hover {
+  transition: opacity 0.5s;
+  opacity: 0.6;
+}
