@@ -41,13 +41,12 @@ function Header(props) {
           Авторизоваться
         </button>
         <Link className="header__name-button" to="/">
-          <button
-            type="button"
+          <div
             className={`header__button_type_dark ${blackButton}`}
           >
             Грета
             <img className="header__logout" src={logout} alt="Выход" />
-          </button>
+          </div>
         </Link>
       </div>
     </header>

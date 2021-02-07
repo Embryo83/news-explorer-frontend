@@ -72,13 +72,12 @@ function PopupMenu({ isOpen, onClose, onClick }) {
               Авторизоваться
             </button>
             <Link className="burger__button-link" to="/">
-              <button
-                type="button"
+              <div
                 className={`burger__button-name ${savedNewsButton} ${darkButton}`}
               >
                 Грета
                 <img className="burger__logout" src={logoutLight} alt="Выход" />
-              </button>
+              </div>
             </Link>
           </div>
         </div>
