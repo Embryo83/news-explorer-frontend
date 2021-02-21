@@ -1,10 +1,13 @@
 import React from "react";
 import "./PopupMenu.css";
 import { useLocation, Link, NavLink } from "react-router-dom";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import logoutLight from "../../images/logout-dark.png";
+import logout from "../../images/logout.png";
 
-function PopupMenu({ isOpen, onClose, onClick }) {
+function PopupMenu({ isOpen, onClose, loggedIn, signOut, onClick }) {
   const { pathname } = useLocation();
+  const currentUser = React.useContext(CurrentUserContext);
 
   const savedNewsButton = `${
     pathname === "/saved-news"
@@ -12,7 +15,7 @@ function PopupMenu({ isOpen, onClose, onClick }) {
       : "burger__dark-button"
   }`;
   const whiteButton = `${
-    pathname === "/saved-news" ? "burger__button_type_active" : ""
+    pathname === "/saved-news" ? "burger__button_type_hidden" : "burger__button_type_active"
   }`;
   const darkButton = `${
     pathname === "/saved-news" ? "burger__light-button" : ""
@@ -28,6 +31,9 @@ function PopupMenu({ isOpen, onClose, onClick }) {
       ? "burger__close-button_type_light"
       : "burger__close-button"
   }`;
+
+  const buttonTitle = `${!loggedIn ? `Авторизоваться` : `${currentUser.name}`}`;
+
   return (
     <div className={`burger ${isOpen && "burger_type_opened"}`}>
       <div className={`burger__container ${whiteBg}`}>
@@ -53,7 +59,7 @@ function PopupMenu({ isOpen, onClose, onClick }) {
                   Главная
                 </NavLink>
               </li>
-              <li className="burger__nav-link">
+              <li className={loggedIn ? "burger__nav-link" : "burger__nav-link_disabled"}>
                 <NavLink
                   className={`burger__nav-title ${darkText}`}
                   to="/saved-news"
@@ -66,19 +72,20 @@ function PopupMenu({ isOpen, onClose, onClick }) {
           <div className="burger__button-container">
             <button
               type="button"
-              onClick={onClick}
+              onClick={loggedIn ? signOut : onClick}
               className={`burger__button ${whiteButton}`}
             >
-              Авторизоваться
+              {buttonTitle}
+              {loggedIn && <img className="burger__logout" src={logout} alt="Выход"/>}
             </button>
-            <Link className="burger__button-link" to="/">
-              <div
-                className={`burger__button-name ${savedNewsButton} ${darkButton}`}
+            <button 
+              type="button"
+              onClick={signOut}
+              className={`burger__button-name ${savedNewsButton} ${darkButton}`}
               >
-                Грета
+                {buttonTitle}
                 <img className="burger__logout" src={logoutLight} alt="Выход" />
-              </div>
-            </Link>
+            </button>
           </div>
         </div>
       </div>

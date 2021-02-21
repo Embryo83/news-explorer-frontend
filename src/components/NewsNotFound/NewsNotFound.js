@@ -1,15 +1,15 @@
 import React from "react";
 import "./NewsNotFound.css";
-import notFind from "../../images/nonews-pic.png";
+import notFound from "../../images/nonews-pic.png";
 
-function NewsNotFound() {
+function NewsNotFound({ isOpen }) {
   return (
-    <section className="no-result">
+    <section className={`no-result ${isOpen ? 'no-result_active' : ''}`}>
       <div className="no-result__container">
         <img
           className="no-result__logo"
           alt="Ничего не найдено"
-          src={notFind}
+          src={notFound}
         />
         <h2 className="no-result__title">Ничего не найдено</h2>
         <p className="no-result__subtitle">

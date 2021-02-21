@@ -1,15 +1,25 @@
 import React from "react";
 import About from "../About/About";
 import NewsCardList from "../NewsCardList/NewsCardList";
-import NewsNotFound from "../NewsNotFound/NewsNotFound";
-import Preloader from "../Preloader/Preloader";
 
-function Main() {
+function Main({
+  articles,
+  keyword,
+  loggedIn,
+  handleLoginClick,
+  articlesArray,
+  updateArticles,
+}) {
   return (
     <main className="main">
-      <Preloader />
-      <NewsNotFound />
-      <NewsCardList />
+       <NewsCardList
+         articles={articles}
+         keyword={keyword}
+         loggedIn={loggedIn}
+         handleLoginClick={handleLoginClick}
+         articlesArray={articlesArray}
+         updateArticles={updateArticles}
+       />
       <About />
     </main>
   );

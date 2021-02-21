@@ -1,17 +1,33 @@
 import React from "react";
 import "./SavedNews.css";
 import NewsCard from "../NewsCard/NewsCard";
-import Cards from "../../utils/SampleCards";
 
-function SavedNews() {
+function SavedNews({ articlesArray, updateArticles, loggedIn, ...props }) {
   return (
-    <section className="saved-news">
-      <div className="saved-news__container">
-        {Cards.map((article, key) => (
-          <NewsCard article={article} key={key} />
-        ))}
-      </div>
-    </section>
+    articlesArray.length !== 0 
+      ?
+      (<section className="saved-news">
+        <div className="saved-news__container">
+          {
+            articlesArray.map((article, key) => (
+              <NewsCard 
+                article={article}
+                date={article.date}
+                articles={props.articles}
+                articlesArray={articlesArray}
+                image={article.image}
+                link={article.link}
+                title={article.title}
+                description={article.text}
+                source={article.source.name || article.source}
+                updateArticles={updateArticles}
+                key={key}
+                keyword={article.keyword}
+                loggedIn={loggedIn}/>
+          ))}
+        </div>
+      </section>)
+      : ('')
   );
 }
 

@@ -2,11 +2,17 @@ import React from "react";
 import PopupWithForm from "../PopupWithForm/PopupWithForm";
 import Validator from "../../utils/Validator.js";
 
-function Register({ isOpen, onClose, onSubmit, togglePopup, errorText }) {
-  const validator = Validator();
-  const handleChange = (e) => {
-    validator.handleChange(e);
-  };
+function Register({ isOpen, onClose, onSubmit, togglePopup, isErrorText }) {
+  const { values, handleChange, errors, isValid, resetForm } = Validator();
+
+  function submitRegister(evt) {
+    evt.preventDefault();
+    onSubmit(values.password, values.email, values.name);
+  }
+
+  React.useEffect(() => {
+    resetForm();
+  }, [isOpen, resetForm]);
 
   return (
     <PopupWithForm
@@ -17,12 +23,13 @@ function Register({ isOpen, onClose, onSubmit, togglePopup, errorText }) {
       togglePopup={togglePopup}
       isOpen={isOpen}
       onClose={onClose}
-      onSubmit={onSubmit}
-      errorText={errorText}
-      isValid={validator.isValid}
+      onSubmit={submitRegister}
+      errorMessage={isErrorText}
+      isValid={isValid}
     >
       <p className="popup__input-title">Email</p>
       <input
+        value={values.email || ""}
         name="email"
         className="popup__input"
         type="email"
@@ -31,23 +38,25 @@ function Register({ isOpen, onClose, onSubmit, togglePopup, errorText }) {
         placeholder="Введите почту"
         onChange={handleChange}
       />
-      <span className="popup__error">{validator.errors.email}</span>
+      <span className="popup__error">{errors.email}</span>
 
       <p className="popup__input-title">Пароль</p>
       <input
+        value={values.password || ""}
         name="password"
         className="popup__input"
         type="password"
         required
-        minLength="1"
+        minLength="2"
         autoComplete="off"
         placeholder="Введите пароль"
         onChange={handleChange}
       />
-      <span className="popup__error ">{validator.errors.password}</span>
+      <span className="popup__error ">{errors.password}</span>
 
       <p className="popup__input-title">Имя</p>
       <input
+        value={values.name || ""}
         name="name"
         className="popup__input"
         type="text"
@@ -57,7 +66,7 @@ function Register({ isOpen, onClose, onSubmit, togglePopup, errorText }) {
         placeholder="Введите имя"
         onChange={handleChange}
       />
-      <span className="popup__error ">{validator.errors.name}</span>
+      <span className="popup__error ">{errors.name}</span>
     </PopupWithForm>
   );
 }
