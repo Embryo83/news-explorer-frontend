@@ -1,9 +1,13 @@
 .preloader {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   padding: 80px 0;
   background: #f5f6f7;
+}
+
+.preloader_active {
+  display: flex;
 }
   
 .preloader__circle {

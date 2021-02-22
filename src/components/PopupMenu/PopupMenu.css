@@ -84,6 +84,10 @@
   margin-bottom: 0px;
 }
 
+.burger__nav-link_disabled {
+  display: none;
+}
+
 .burger__nav-title {
   font-family: 'Roboto', 'Arial', sans-serif;
   font-weight: 500;
@@ -136,11 +140,19 @@
   margin-bottom: 24px;
   cursor: pointer;
   outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 
 .burger__button:hover {
   transition: opacity 0.5s;
   opacity: 0.6;
+}
+
+.burger__button_type_hidden {
+  display: none;
 }
 
 .burger__button-link {

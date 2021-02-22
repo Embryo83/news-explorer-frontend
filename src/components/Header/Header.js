@@ -1,11 +1,19 @@
 import React from "react";
 import "./Header.css";
 import { useLocation, Link } from "react-router-dom";
+import CurrentUserContext from "../../contexts/CurrentUserContext";
 import Navigation from "../Navigation/Navigation";
 import logout from "../../images/logout-dark.png";
+import logoutDark from "../../images/logout.png";
 
-function Header(props) {
+function Header({
+  handleMenuClick,
+  handleLoginClick,
+  loggedIn,
+  signOut,
+}) {
   const { pathname } = useLocation();
+  const currentUser = React.useContext(CurrentUserContext);
   const blackLogo = `${
     pathname === "/saved-news" ? "header__logo_type_dark" : "header__logo"
   }`;
@@ -20,6 +28,8 @@ function Header(props) {
   const whiteButton = `${
     pathname === "/saved-news" ? "header__active-button" : "header__button"
   }`;
+  const buttonTitle = `${!loggedIn ? `Авторизоваться` : `${currentUser.name}`}`;
+
   return (
     <header className="header">
       <Link to="/" className={`header__logo ${blackLogo}`}>
@@ -27,27 +37,29 @@ function Header(props) {
       </Link>
       <button
         type="button"
-        onClick={props.handleMenuClick}
+        onClick={handleMenuClick}
         className={`header__burger ${blackBurger}`}
       ></button>
       <div className="header__container">
-        <Navigation></Navigation>
+        <Navigation loggedIn={loggedIn}></Navigation>
 
         <button
           type="button"
-          onClick={props.handleLoginClick}
+          onClick={loggedIn ? signOut : handleLoginClick}
           className={`header__button ${whiteButton}`}
         >
-          Авторизоваться
+          {buttonTitle}
+          {loggedIn && (
+            <img className="header__logout" src={logoutDark} alt="Выход" />
+          )}
         </button>
-        <Link className="header__name-button" to="/">
-          <div
-            className={`header__button_type_dark ${blackButton}`}
-          >
-            Грета
-            <img className="header__logout" src={logout} alt="Выход" />
-          </div>
-        </Link>
+        <button
+          onClick={signOut}
+          className={`header__button_type_dark ${blackButton}`}
+        >
+          {buttonTitle}
+          <img className="header__logout" src={logout} alt="Выход" />
+        </button>
       </div>
     </header>
   );

@@ -10,7 +10,7 @@ function PopupWithForm({
   submitText,
   toggleText,
   togglePopup,
-  errorText,
+  errorMessage,
   isValid,
   children,
 }) {
@@ -30,8 +30,12 @@ function PopupWithForm({
       >
         <h2 className="popup__title">{title}</h2>
         {children}
-        <p className="popup__error popup__error_type_server">{errorText}</p>
-        <button type="submit" className={submitButton}>
+        <p className="popup__error popup__error_type_server">{errorMessage}</p>
+        <button
+          type="submit"
+          className={submitButton}
+          disabled={!isValid === true}
+        >
           {submitText}
         </button>
         <p className="popup__toggle">

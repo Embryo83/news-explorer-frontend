@@ -6,6 +6,10 @@
   padding-bottom: 80px;
 }
 
+.cards_not-active {
+  display: none;
+}
+
 .cards__title {
   font-family: 'Roboto Slab', 'Arial', sans-serif;
   font-size: 40px;
@@ -41,6 +45,10 @@
   line-height: 1.3;
   color: #1a1b22;
   outline: none;
+}
+
+.cards__button_not-active {
+  display: none;
 }
 
 .cards__button:hover {

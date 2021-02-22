@@ -8,7 +8,7 @@ function Footer() {
   return (
     <footer className="footer">
       <p className="footer__copyright">
-        &copy; 2020 Supersite, Powered by News API
+        &copy; 2021 Supersite, Powered by News API
       </p>
       <div className="footer__container">
         <ul className="footer__links">
